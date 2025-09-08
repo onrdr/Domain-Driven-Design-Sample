@@ -1,4 +1,4 @@
-﻿namespace Domain.Orders;
+﻿namespace Domain.Products;
 
 // Stock Keeping Unit
 public record Sku
