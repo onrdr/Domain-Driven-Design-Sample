@@ -9,6 +9,7 @@ public class Order
     private Order() { }
     public OrderId Id { get; private set; }
     public CustomerId CustomerId { get; private set; }
+    public IReadOnlyList<LineItem> LineItems => _lineItems.ToList();
 
     public static Order Create(CustomerId customerId)
     {
@@ -21,11 +22,7 @@ public class Order
 
     public void Add(ProductId productId, Money price)
     {
-        var lineItem = new LineItem(
-            new LineItemId(Guid.NewGuid()), 
-            Id, 
-            productId, 
-            price);
+        var lineItem = new LineItem(new LineItemId(Guid.NewGuid()), Id, productId, price);
 
         _lineItems.Add(lineItem);
     }
